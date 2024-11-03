@@ -23,7 +23,7 @@
                                 <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="{{ asset('assets/img/AMFL-LOGO-1.png') }}" width="100" alt="">
                                 </a>
-                                <p class="text-center">AMFL</p>
+                                <p class="text-center">DEVNEX</p>
                                 <form action="{{route('login')}}" id="form" method="POST">
                                     @csrf
                                     <div class="mb-3">

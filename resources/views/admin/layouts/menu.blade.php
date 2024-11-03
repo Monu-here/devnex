@@ -1,5 +1,5 @@
 <div class="brand-logo d-flex align-items-center justify-content-between">
-    <a href="{{route('admin.dashboard')}}" class="text-nowrap logo-img">
+    <a href="#" class="text-nowrap logo-img">
         <img src="{{ asset('assets/img/AMFL-LOGO-1.png') }}" width="90" alt="" />
     </a>
     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -13,7 +13,7 @@
             <span class="hide-menu">Home</span>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.dashboard')}}" aria-expanded="false">
+            <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
                     <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -25,7 +25,7 @@
             <span class="hide-menu">COMPONENTS</span>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.blog.index')}}" aria-expanded="false">
+            <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
@@ -33,7 +33,7 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.event.index')}}" aria-expanded="false">
+            <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
@@ -41,7 +41,7 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.contactus.index')}}" aria-expanded="false">
+            <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
@@ -49,7 +49,7 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.catalog.catalogIndex')}}" aria-expanded="false">
+            <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>

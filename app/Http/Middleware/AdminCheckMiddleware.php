@@ -17,12 +17,12 @@ class AdminCheckMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
+        
         if ($user && $user->role === '1') {
-            return redirect('/admin')->with('success', 'You are already logged in as an admin.');
+            return $next($request);
         }
-        else{
-            echo 'You are not allowed to login. Please try again.';
-        }
-        // return $next($request);
+
+        // Return a forbidden response if the user is not an admin
+        return response()->json(['error' => 'Unauthorized'], 403);
     }
 }

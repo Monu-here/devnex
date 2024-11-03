@@ -17,7 +17,8 @@ class LoginController extends Controller
             if (Auth::attempt($credential)) {
                 return redirect()->route('admin.dashboard');
             } else {
-                return redirect()->back()->withInput()->withErrors(['email' => 'Invalid credentials']);
+                return view('admin.login.index');
+                // return redirect()->back()->withInput()->withErrors(['email' => 'Invalid credentials']);
             }
         }
     }
