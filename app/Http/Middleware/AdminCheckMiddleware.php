@@ -17,12 +17,12 @@ class AdminCheckMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        
-        if ($user && $user->role === '1') {
-            return $next($request);
-        }
 
-        // Return a forbidden response if the user is not an admin
-        return response()->json(['error' => 'Unauthorized'], 403);
+        if ($user && $user->role == '1') {
+            \Log::info('Admin access granted.');
+            return $next($request);
+        } else {
+            \Log::warning('Admin access denied.', ['user' => $user]);
+        }
     }
 }

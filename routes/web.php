@@ -23,7 +23,7 @@ Route::name('front.')->group(function () {
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware('admin','auth')->name('admin.')->group(function () {
     Route::get('', [DashboardController::class, 'index'])->name('dashboard');
     Route::prefix('setting')->name('setting.')->name(function () {
         Route::get('', [SettingController::class, 'index'])->name('index');

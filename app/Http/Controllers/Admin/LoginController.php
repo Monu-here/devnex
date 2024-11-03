@@ -15,16 +15,18 @@ class LoginController extends Controller
             $credential = $request->only('email', 'password');
             $credential['role'] = '1';
             if (Auth::attempt($credential)) {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.dashboard')->with('message', 'Login  Successfully');
             } else {
-                return view('admin.login.index');
-                // return redirect()->back()->withInput()->withErrors(['email' => 'Invalid credentials']);
+                return redirect()->back()->withInput()->with('error', 'Invalid credentials');
             }
+        } else {
+            return view('admin.login.index');
         }
     }
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
-        return redirect()->route('admin.login');
+        return redirect()->route('login');
     }
     // public function user(){
     //     $data = User::get(['name','email']);
