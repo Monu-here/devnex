@@ -856,8 +856,7 @@ parallax & home seperator
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  background-image: url(../images/work-process-bg.png);
-  z-index: 2;
+   z-index: 2;
   top: -20%;
   left: -20%;
 }
@@ -979,8 +978,7 @@ parallax & home seperator
   width: 140%;
   height: 140%;
   opacity: .90;
-  background-image: url(../images/fun-facts-bg.png);
-  background-repeat: no-repeat;
+   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   z-index: 2;
@@ -1012,7 +1010,6 @@ parallax & home seperator
   height: 32px;
   top: 160px;
   left: 70%;
-  background: url(../images/circle-dec.png) center center no-repeat;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -1030,7 +1027,6 @@ parallax & home seperator
   height: 32px;
   top: 140px;
   left: 70%;
-  background: url(../images/circle-dec.png) center center no-repeat;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;

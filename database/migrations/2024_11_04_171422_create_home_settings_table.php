@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('home_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('website_name')->nullable();
-            $table->string('website_title')->nullable();
-            $table->text('website_image')->nullable();
-            $table->json('social_media')->nullable();
-            $table->string('copyright')->nullable();
+            $table->text('home_text');
+            $table->text('home_description');
+            $table->text('btn_text');
+             $table->json('achievements_number');
+            $table->json('achievements_name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('home_settings');
     }
 };

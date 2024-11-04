@@ -127,7 +127,7 @@
     <!-- ***** Features Big Item End ***** -->
 
     <!-- ***** Home Parallax Start ***** -->
-    <section class="mini" id="work-process">
+    <section class="mini" id="work-process" style="background-image: url('{{asset('assets/image/work-process-bg.png')}}')">
         <div class="mini-content">
             <div class="container">
                 <div class="row">
@@ -381,24 +381,24 @@
     <!-- ***** Pricing Plans End ***** -->
 
     <!-- ***** Counter Parallax Start ***** -->
-    <section class="counter">
+    <section class="counter" style="background-image: url('{{asset('assets/image/fun-facts-bg.png')}}')">
         <div class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-bottom">
+                        <div class="count-item decoration-bottom " style="background-image: url('{{asset('assets/image/circle-dec.png')}}')  background-position: center center; background-repeat: no-repeat;  " >
                             <strong>126</strong>
                             <span>Projects</span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-top">
+                        <div class="count-item decoration-top" style="background-image: url('{{asset('assets/image/circle-dec.png')}}')  background-position: center center; background-repeat: no-repeat;">
                             <strong>63</strong>
                             <span>Happy Clients</span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-bottom">
+                        <div class="count-item decoration-bottom" style="background-image: url('{{ asset('assets/image/circle-dec.png') }}'); background-position: center center; background-repeat: no-repeat;">
                             <strong>18</strong>
                             <span>Awards Wins</span>
                         </div>

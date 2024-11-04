@@ -29,7 +29,7 @@
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Setting</span>
+                <span class="hide-menu">Website Setting</span>
             </a>
         </li>
         <li class="sidebar-item">
@@ -37,7 +37,7 @@
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Event</span>
+                <span class="hide-menu">Home Setting</span>
             </a>
         </li>
         <li class="sidebar-item">

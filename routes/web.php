@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Front\HomeController;
@@ -31,5 +32,12 @@ Route::prefix('admin')->middleware('admin', 'auth')->name('admin.')->group(funct
         Route::match(['GET', 'POST'], 'add', [SettingController::class, 'add'])->name('add');
         // Route::match(['GET', 'POST'], 'edit', [SettingController::class, 'edit'])->name('edit');
         // Route::get('del', [SettingController::class, 'del'])->name('del');
+    });
+    Route::prefix('homeSetting')->name('homeSetting.')->group(function () {
+        // Route::get('', [HomeSettingController::class, 'index'])->name('index');
+        // Route::get('fetch-data', [HomeSettingController::class, 'fetchData'])->name('fetch-data');
+        Route::match(['GET', 'POST'], 'add', [HomeSettingController::class, 'add'])->name('add');
+        // Route::match(['GET', 'POST'], 'edit', [HomeSettingController::class, 'edit'])->name('edit');
+        // Route::get('del', [HomeSettingController::class, 'del'])->name('del');
     });
 });
