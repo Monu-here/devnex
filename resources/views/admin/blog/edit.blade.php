@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('admin_title','AMFL | Blog  Edit')
+@section('admin_title','DEVNEX | Blog  Edit')
 @section('header')
 / <a href="{{route('admin.blog.index')}}">Blog</a> /  Edit
 

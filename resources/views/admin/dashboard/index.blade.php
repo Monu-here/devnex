@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('admin_title', 'AMFL | Dashboard')
+@section('admin_title', 'DEVNEX | Dashboard')
 
 @section('content')
     <!--  Row 1 -->
