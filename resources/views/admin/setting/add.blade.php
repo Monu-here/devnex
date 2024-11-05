@@ -24,7 +24,7 @@
                                         <label for="title" class="form-label">Website Name <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="website_name" id="website_name"
-                                            placeholder="Website Name" value="{{$setting->website_name ?? ''}}">
+                                            placeholder="Website Name" value="{{ $setting->website_name ?? '' }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -32,7 +32,7 @@
                                         <label for="title" class="form-label">Website Title <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="website_title" id="website_title"
-                                            placeholder="Website Title" value="{{$setting->website_title ?? ''}}">
+                                            placeholder="Website Title" value="{{ $setting->website_title ?? '' }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -40,28 +40,32 @@
                                         <label for="title" class="form-label">Copyright Text <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="copyright" id="copyright"
-                                            placeholder="Copyright text " value="{{$setting->copyright ?? ''}}">
+                                            placeholder="Copyright text " value="{{ $setting->copyright ?? '' }}">
                                     </div>
                                 </div>
-                               
+
+
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Social Media <span
                                                 style="color: red;">*</span></label>
                                         <a href="javascript:void(0);" style="display: flex; float: right;"
                                             onclick="addSocialMedia()">Add More</a>
-                                            @php
-                                            $socialMediaString = implode(', ',  array_filter((array) json_decode($setting['social_media'] ?? '[]')));
+                                        @if (!empty($setting['social_media']))
+                                            @foreach (json_decode($setting['social_media']) as $socialMedia)
+                                                {{-- // $s  ocialMediaString = implode(', ',json_decode($setting['social_media'] ?? '[]')); --}}
+                                                <input type="text" class="form-control" name="social_media[]"
+                                                    value="{{ $socialMedia }}">
+                                            @endforeach
+                                        @else
+                                            <input type="text" class="form-control" name="social_media[]"
+                                                placeholder="Social media">
+                                        @endif
 
-                                            @endphp     
-                                        <input type="text" class="form-control" name="social_media[]" id="social_media"
-                                            placeholder="Social media " value="{{$socialMediaString}}">
-
-                                        <div id="socialField" style="margin-top : 10px;">
-
-                                        </div>
+                                        <div id="socialField" style="margin-top : 10px;"></div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -69,7 +73,8 @@
                                 <label for="title" class="form-label">Webiste Logo <span
                                         style="color: red;">*</span></label>
                                 <input type="file" name="website_image" id="webiste_image" class="dropify"
-                                    accept="image/*" data-default-file="{{asset($setting->website_image ?? 'assets/image/logo.png')}}">
+                                    accept="image/*"
+                                    data-default-file="{{ asset($setting->website_image ?? 'assets/image/logo.png') }}">
                             </div>
                             <button type="submit" id="saveBtn" class="btn btn-primary">Submit</button>
                         </div>
