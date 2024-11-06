@@ -78,51 +78,53 @@
                         </div>
 
                     </div>
-                    <div class="row">
-                        <hr>
-                        <h3>Services & Our Approach</h3>
-                        <form action="">
-                            <div class="col-md-6">
-                                <input type="file" name="image" id="image" class="form-control dropify">
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">Service Name <span
-                                            style="color: red;">*</span></label>
-                                    <a href="javascript:void(0);" style="display: flex; float: right;" onclick="xxx()">Add
-                                        More</a>
-
-                                    <input type="text" class="form-control" name="service" id="service"
-                                        placeholder="Services Name ">
-
-                                    <div id="xxx" style="margin-top : 10px;">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="file" name="image" id="image" class="form-control dropify">
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">Our Approach <span
-                                            style="color: red;">*</span></label>
-                                    <a href="javascript:void(0);" style="display: flex; float: right;"
-                                        onclick="xxx()">Add
-                                        More</a>
-
-                                    <input type="text" class="form-control" name="service_name" id="service"
-                                        placeholder="Services Name ">
-                                    <input type="text" class="form-control" name="service_desc" id="service"
-                                        placeholder="Services Description ">
-
-                                    <div id="xxx" style="margin-top : 10px;">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <hr>
+                    <h3>Services & Our Approach</h3>
                     <button type="submit" id="saveBtn" class="btn btn-primary">Submit</button>
+                </form>
+                <form action="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="file" name="image" id="image" class="form-control dropify">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Service Name <span
+                                        style="color: red;">*</span></label>
+                                <a href="javascript:void(0);" style="display: flex; float: right;" onclick="xxx()">Add
+                                    More</a>
+
+                                <input type="text" class="form-control" name="service" id="service"
+                                    placeholder="Services Name ">
+                                    <input type="text" class="form-control" name="approch_desc" id="service"
+                                    placeholder="Approach Description ">
+
+                                <div id="xxx" style="margin-top : 10px;">
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" name="image" id="image" class="form-control dropify">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Our Approach <span
+                                        style="color: red;">*</span></label>
+                                <a href="javascript:void(0);" style="display: flex; float: right;"
+                                    onclick="ourApproch()">Add
+                                    More</a>
+
+                                <input type="text" class="form-control" name="approch_name" id="service"
+                                    placeholder="Approach Name ">
+                                <input type="text" class="form-control" name="approch_desc" id="service"
+                                    placeholder="Approach Description ">
+
+                                <div id="ourApproch" style="margin-top : 10px;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </form>
-
             </div>
         </div>
     </div>
@@ -160,7 +162,7 @@
                 // image
                 var newImageInput = document.createElement("input");
                 newImageInput.type = "file";
-                newImageInput.name = `image_${inputCounter}`;
+                newImageInput.name = `image[]`;
                 newImageInput.className = "form-control dropify";
                 newImageInput.required = true;
                 mydiv.appendChild(newImageInput);
@@ -169,7 +171,7 @@
                 var newServiceInput = document.createElement("input");
                 newServiceInput.type = "text";
                 newServiceInput.placeholder = "Services Name";
-                newServiceInput.name = `service_name_${inputCounter}`;
+                newServiceInput.name = `service_name[]`;
                 newServiceInput.className = "form-control";
                 newServiceInput.required = true;
                 mydiv.appendChild(newServiceInput);
@@ -177,13 +179,46 @@
                 var newServiceInput = document.createElement("input");
                 newServiceInput.type = "text";
                 newServiceInput.placeholder = "Services Description";
-                newServiceInput.name = `service_desc_${inputCounter}`;
+                newServiceInput.name = `service_desc[]`;
                 newServiceInput.className = "form-control";
                 newServiceInput.required = true;
                 mydiv.appendChild(newServiceInput);
                 inputCounter++;
             } else {
                 alert("You can add up to 3 services only.");
+            }
+        }
+
+        let approchCount = 1;
+        function ourApproch() {
+            if (approchCount < 3) {
+                var mydiv = document.getElementById("ourApproch");
+                var newImageInput = document.createElement("input");
+                newImageInput.type = "file";
+                newImageInput.name = `image[]`;
+                newImageInput.className = "form-control dropify";
+                newImageInput.required = true;
+                mydiv.appendChild(newImageInput);
+                $(newImageInput).dropify();
+                // approch name
+                var newOurApproch = document.createElement("input");
+                newOurApproch.type = "text";
+                newOurApproch.placeholder = "Approch Name";
+                newOurApproch.name = `approch_name[]`;
+                newOurApproch.className = "form-control";
+                newOurApproch.required = true;
+                mydiv.appendChild(newOurApproch);
+                // approch descriotion
+                var newOurApproch = document.createElement("input");
+                newOurApproch.type = "text";
+                newOurApproch.placeholder = "Approch Description";
+                newOurApproch.name = `approch_desc[]`;
+                newOurApproch.className = "form-control";
+                newOurApproch.required = true;
+                mydiv.appendChild(newOurApproch);
+                approchCount++;
+            } else {
+                alert("You can add up to 3 approch only.");
             }
         }
 
@@ -213,5 +248,29 @@
         $(document).ready(function() {
             $('.dropify').dropify();
         });
+    </script>
+    <script>
+        <script type="text/javascript">
+    var frm = $('#contactForm1');
+
+    frm.submit(function (e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+                console.log('Submission was successful.');
+                console.log(data);
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+    });
+</script>
     </script>
 @endsection

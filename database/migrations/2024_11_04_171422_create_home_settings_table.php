@@ -13,11 +13,19 @@ return new class extends Migration
     {
         Schema::create('home_settings', function (Blueprint $table) {
             $table->id();
+            $table->string('unique_id', 128);
             $table->text('home_text');
             $table->text('home_description');
             $table->text('btn_text');
-             $table->json('achievements_number');
+            $table->json('achievements_number');
             $table->json('achievements_name');
+            $table->json('approch_name');
+            $table->json('approch_desc');
+            $table->json('approch_image');
+            $table->json('service_name');
+            $table->json('service_desc');
+            $table->json('service_image');
+           
             $table->timestamps();
         });
     }
