@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <form id="form" action="#" enctype="multipart/form-data" method="POST">
+                <form id="form" action="{{route('admin.homeSetting.add')}}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
@@ -24,7 +24,7 @@
                                         <label for="title" class="form-label">Home Text <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="home_text" id="home_text"
-                                            placeholder="Website Name">
+                                            placeholder="Home Text">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -32,7 +32,7 @@
                                         <label for="title" class="form-label">Button Text <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="btn_text" id="btn_text"
-                                            placeholder="Website Title">
+                                            placeholder="Button Text ">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -40,7 +40,7 @@
                                         <label for="title" class="form-label">Home Description <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="home_description"
-                                            id="home_description" placeholder="Copyright text ">
+                                            id="home_description" placeholder="Home Description ">
                                     </div>
                                 </div>
 
@@ -52,7 +52,7 @@
                                             onclick="achievementsnumber()">Add More</a>
 
                                         <input type="text" class="form-control" name="achievements_number[]"
-                                            id="achievements_number" placeholder="Social media ">
+                                            id="achievements_number" placeholder="Achievements Nmuber ">
 
                                         <div id="achievementsnumber" style="margin-top : 10px;">
 
@@ -67,7 +67,7 @@
                                             onclick="achievementsname()">Add More</a>
 
                                         <input type="text" class="form-control" name="achievements_name[]"
-                                            id="achievements_name" placeholder="Social media ">
+                                            id="achievements_name" placeholder="Achievements Text ">
 
                                         <div id="achievementsname" style="margin-top : 10px;">
 
@@ -81,21 +81,21 @@
                     <hr>
                     <h3>Services & Our Approach</h3>
                     <button type="submit" id="saveBtn" class="btn btn-primary">Submit</button>
-                </form>
-                <form action="">
+             
+              
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="file" name="image" id="image" class="form-control dropify">
+                            <input type="file" name="service_image" id="service_image" class="form-control dropify">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Service Name <span
                                         style="color: red;">*</span></label>
                                 <a href="javascript:void(0);" style="display: flex; float: right;" onclick="xxx()">Add
                                     More</a>
 
-                                <input type="text" class="form-control" name="service" id="service"
+                                <input type="text" class="form-control" name="service_name" id="service_name"
                                     placeholder="Services Name ">
                                     <input type="text" class="form-control" name="approch_desc" id="service"
-                                    placeholder="Approach Description ">
+                                    placeholder="Services Description ">
 
                                 <div id="xxx" style="margin-top : 10px;">
 
@@ -104,7 +104,7 @@
 
                         </div>
                         <div class="col-md-6">
-                            <input type="file" name="image" id="image" class="form-control dropify">
+                            <input type="file" name="approch_image" id="approch_image" class="form-control dropify">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Our Approach <span
                                         style="color: red;">*</span></label>
@@ -162,7 +162,7 @@
                 // image
                 var newImageInput = document.createElement("input");
                 newImageInput.type = "file";
-                newImageInput.name = `image[]`;
+                newImageInput.name = `service_image[]`;
                 newImageInput.className = "form-control dropify";
                 newImageInput.required = true;
                 mydiv.appendChild(newImageInput);
@@ -195,7 +195,7 @@
                 var mydiv = document.getElementById("ourApproch");
                 var newImageInput = document.createElement("input");
                 newImageInput.type = "file";
-                newImageInput.name = `image[]`;
+                newImageInput.name = `approch_image[]`;
                 newImageInput.className = "form-control dropify";
                 newImageInput.required = true;
                 mydiv.appendChild(newImageInput);
