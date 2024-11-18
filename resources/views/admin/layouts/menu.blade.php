@@ -41,11 +41,11 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="#" aria-expanded="false">
+            <a class="sidebar-link" href="{{route('admin.WorkProcess.add')}}" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Contact Us</span>
+                <span class="hide-menu">Work Process</span>
             </a>
         </li>
         <li class="sidebar-item">
