@@ -1,4 +1,202 @@
 @extends('front.layout.app')
+@section('css')
+    <style>
+ 
+
+
+        .projects-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vH;
+            background-color: #F5F5F5;
+            font-family: Roboto;
+        }
+
+        .projects-h1 {
+            font-size: 40pt;
+            font-weight: 500;
+            color: #363638;
+        }
+
+        .projects-container {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 80%;
+        }
+
+        .projects-item {
+            position: relative;
+            float: left;
+            overflow: hidden;
+            margin: 10px 1%;
+            min-width: 320px;
+            max-width: 410px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+            box-sizing: border-box;
+        }
+
+        .projects-item:hover {
+            cursor: pointer;
+        }
+
+        .projects-item * {
+            transition: all 0.35s ease-in-out;
+        }
+
+        .projects-img {
+            max-width: 100%;
+            vertical-align: top;
+            height: 310px;
+        }
+
+        .projects-item:hover img {
+            opacity: 0;
+        }
+
+        .projects-text {
+            width: 80%;
+            height: 90%;
+            position: absolute;
+            top: -100px;
+            left: 10%;
+            color: #01A2AC;
+        }
+
+        .projects-text h3 {
+            color: black;
+        }
+
+        .projects-item:hover .projects-text {
+            top: 20%;
+        }
+
+        .projects-item:hover .projects-button {
+            bottom: 20%;
+        }
+
+        .projects-item .projects-button {
+            position: absolute;
+            bottom: -100px;
+            left: 25%;
+            width: 50%;
+            border: 3px solid #01A2AC;
+            padding: 15px;
+            box-sizing: border-box;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .projects-button:hover {
+            background-color: #01A2AC;
+            color: #F5F5F5;
+        }
+
+        /* Modal */
+
+        .modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #F5F5F5;
+            margin: 5% auto;
+            box-sizing: border-box;
+            width: 700px;
+            max-height: 714px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .scale {
+            animation: scale 0.5s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes scale {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        #img {
+            width: 100%;
+            height: 450px;
+        }
+
+        #details {
+            padding: 25px;
+            text-align: left;
+            position: relative;
+            height: 264px;
+            box-sizing: border-box;
+            border-top: 1px solid #363638;
+        }
+
+        #details * {
+            transition: all .3s;
+        }
+
+        #title {
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        #details .button {
+            position: absolute;
+            width: 30%;
+            background-color: #01A2AC;
+            color: #F5F5F5;
+            text-align: center;
+            left: 25px;
+            bottom: 35px;
+            padding: 15px;
+        }
+
+        #details i {
+            position: absolute;
+            bottom: 30px;
+            right: 25px;
+            font-size: 3rem;
+            color: #01A2AC;
+        }
+
+        #details .button:hover,
+        i:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Close Button */
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #363638;
+            text-decoration: none;
+            cursor: pointer;
+        }
+     </style>
+@endsection
 @section('content')
     <!-- ***** Welcome Area Start ***** -->
     <div class="welcome-area" style="background-image: url('{{ asset('assets/image/banner-bg.png') }}')" id="welcome">
@@ -127,7 +325,8 @@
     <!-- ***** Features Big Item End ***** -->
 
     <!-- ***** Home Parallax Start ***** -->
-    <section class="mini" id="work-process" style="background-image: url('{{asset('assets/image/work-process-bg.png')}}')">
+    <section class="mini" id="work-process"
+        style="background-image: url('{{ asset('assets/image/work-process-bg.png') }}')">
         <div class="mini-content">
             <div class="container">
                 <div class="row">
@@ -273,132 +472,103 @@
     <!-- ***** Testimonials End ***** -->
 
     <!-- ***** Pricing Plans Start ***** -->
-    <section class="section colored" id="pricing-plans">
-        <div class="container">
-            <!-- ***** Section Title Start ***** -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="center-heading">
-                        <h2 class="section-title">Pricing Plans</h2>
-                    </div>
+    <section class="projects-section">
+        <h1 class="projects-h1">Projects</h1>
+        <div class="projects-container">
+            <div class="projects-item" id="1">
+                <img src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+                    alt="" class="projects-img">
+                <div class="projects-text">
+                    <h3>PROJECT 1</h4>
+                        <p>Short Description</p>
                 </div>
-                <div class="offset-lg-3 col-lg-6">
-                    <div class="center-text">
-                        <p>Donec vulputate urna sed rutrum venenatis. Cras consequat magna quis arcu elementum, quis
-                            congue risus volutpat.</p>
-                    </div>
-                </div>
+                <div class="projects-button">Learn More</div>
             </div>
-            <!-- ***** Section Title End ***** -->
-
-            <div class="row">
-                <!-- ***** Pricing Item Start ***** -->
-                <div class="col-lg-4 col-md-6 col-sm-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
-                    <div class="pricing-item">
-                        <div class="pricing-header">
-                            <h3 class="pricing-title">Starter</h3>
-                        </div>
-                        <div class="pricing-body">
-                            <div class="price-wrapper">
-                                <span class="currency">$</span>
-                                <span class="price">14.50</span>
-                                <span class="period">monthly</span>
-                            </div>
-                            <ul class="list">
-                                <li class="active">60 GB space</li>
-                                <li class="active">600 GB transfer</li>
-                                <li class="active">Pro Design Panel</li>
-                                <li>15-minute support</li>
-                                <li>Unlimited Emails</li>
-                                <li>24/7 Security</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="#" class="main-button">Purchase Now</a>
-                        </div>
-                    </div>
+            <div class="projects-item" id="1">
+                <img src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+                    alt="" class="projects-img">
+                <div class="projects-text">
+                    <h3>PROJECT 1</h4>
+                        <p>Short Description</p>
                 </div>
-                <!-- ***** Pricing Item End ***** -->
-
-                <!-- ***** Pricing Item Start ***** -->
-                <div class="col-lg-4 col-md-6 col-sm-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
-                    <div class="pricing-item active">
-                        <div class="pricing-header">
-                            <h3 class="pricing-title">Premium</h3>
-                        </div>
-                        <div class="pricing-body">
-                            <div class="price-wrapper">
-                                <span class="currency">$</span>
-                                <span class="price">21.50</span>
-                                <span class="period">monthly</span>
-                            </div>
-                            <ul class="list">
-                                <li class="active">120 GB space</li>
-                                <li class="active">1200 GB transfer</li>
-                                <li class="active">Pro Design Panel</li>
-                                <li class="active">15-minute support</li>
-                                <li>Unlimited Emails</li>
-                                <li>24/7 Security</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="#" class="main-button">Purchase Now</a>
-                        </div>
-                    </div>
+                <div class="projects-button">Learn More</div>
+            </div>
+            <div class="projects-item" id="1">
+                <img src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+                    alt="" class="projects-img">
+                <div class="projects-text">
+                    <h3>PROJECT 1</h4>
+                        <p>Short Description</p>
                 </div>
-                <!-- ***** Pricing Item End ***** -->
-
-                <!-- ***** Pricing Item Start ***** -->
-                <div class="col-lg-4 col-md-6 col-sm-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
-                    <div class="pricing-item">
-                        <div class="pricing-header">
-                            <h3 class="pricing-title">Advanced</h3>
-                        </div>
-                        <div class="pricing-body">
-                            <div class="price-wrapper">
-                                <span class="currency">$</span>
-                                <span class="price">42.00</span>
-                                <span class="period">monthly</span>
-                            </div>
-                            <ul class="list">
-                                <li class="active">250 GB space</li>
-                                <li class="active">5000 GB transfer</li>
-                                <li class="active">Pro Design Panel</li>
-                                <li class="active">15-minute support</li>
-                                <li class="active">Unlimited Emails</li>
-                                <li class="active">24/7 Security</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="#" class="main-button">Purchase Now</a>
-                        </div>
-                    </div>
+                <div class="projects-button">Learn More</div>
+            </div>
+            <div class="projects-item" id="1">
+                <img src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+                    alt="" class="projects-img">
+                <div class="projects-text">
+                    <h3>PROJECT 1</h4>
+                        <p>Short Description</p>
                 </div>
-                <!-- ***** Pricing Item End ***** -->
+                <div class="projects-button">Learn More</div>
+            </div>
+            <div class="projects-item" id="1">
+                <img src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+                    alt="" class="projects-img">
+                <div class="projects-text">
+                    <h3>PROJECT 1</h4>
+                        <p>Short Description</p>
+                </div>
+                <div class="projects-button">Learn More</div>
+            </div>
+            <div class="projects-item" id="1">
+                <img src="https://images.unsplash.com/photo-1508124780861-b1687f9a13e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f841d43a63c085e930aa5b6b33e89a9f&auto=format&fit=crop&w=1385&q=80"
+                    alt="" class="projects-img">
+                <div class="projects-text">
+                    <h3>PROJECT 1</h4>
+                        <p>Short Description</p>
+                </div>
+                <div class="projects-button">Learn More</div>
+            </div>
+
+
+        </div>
+        <div id="projects-preview" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="img" src="">
+                <div id="details">
+                    <h3 id="title"></h3>
+                    <p id="info">Some text</p>
+                    <div class="button" id="live">View</div>
+                    <i class="fab fa-github-square" id="github"></i>
+                </div>
             </div>
         </div>
     </section>
     <!-- ***** Pricing Plans End ***** -->
 
     <!-- ***** Counter Parallax Start ***** -->
-    <section class="counter" style="background-image: url('{{asset('assets/image/fun-facts-bg.png')}}')">
+    <section class="counter" style="background-image: url('{{ asset('assets/image/fun-facts-bg.png') }}')">
         <div class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-bottom " style="background-image: url('{{asset('assets/image/circle-dec.png')}}')  background-position: center center; background-repeat: no-repeat;  " >
+                        <div class="count-item decoration-bottom "
+                            style="background-image: url('{{ asset('assets/image/circle-dec.png') }}')  background-position: center center; background-repeat: no-repeat;  ">
                             <strong>126</strong>
                             <span>Projects</span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-top" style="background-image: url('{{asset('assets/image/circle-dec.png')}}')  background-position: center center; background-repeat: no-repeat;">
+                        <div class="count-item decoration-top"
+                            style="background-image: url('{{ asset('assets/image/circle-dec.png') }}')  background-position: center center; background-repeat: no-repeat;">
                             <strong>63</strong>
                             <span>Happy Clients</span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-bottom" style="background-image: url('{{ asset('assets/image/circle-dec.png') }}'); background-position: center center; background-repeat: no-repeat;">
+                        <div class="count-item decoration-bottom"
+                            style="background-image: url('{{ asset('assets/image/circle-dec.png') }}'); background-position: center center; background-repeat: no-repeat;">
                             <strong>18</strong>
                             <span>Awards Wins</span>
                         </div>
@@ -562,4 +732,94 @@
         </div>
     </section>
     <!-- ***** Contact Us End ***** -->
+@endsection
+@section('js')
+    <script>
+        var modalInfo = {
+  1: {
+    title: "Project 1",
+    info: "...",
+    link: "#",
+    github: "#"
+  },
+  2: {
+    title: "Project 2",
+    info: "...",
+    link: "#",
+    github: "#"
+  },
+  3: {
+    title: "Project 3",
+    info: "...",
+    link: "#",
+    github: "#"
+  },
+  4: {
+    title: "Project 4",
+    info: "....",
+    link: "#",
+    github: "#"
+  },
+  5: {
+    title: "Project 5",
+    info: "...",
+    link: "#",
+    github: "#"
+  },
+  6: {
+    title: "Project 6",
+    info: "...",
+    link: "#",
+    github: "#"
+  }
+};
+
+// Get the modal
+var modal = document.getElementById('projects-preview');
+
+// button that opens the modal
+var btn = document.getElementsByClassName("projects-button");
+
+// <span> that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// open modal 
+for(let i = 0; i < btn.length; i++){
+  btn[i].addEventListener("click", function() {
+    var project = btn[i].parentElement;
+    openModal(project);
+  })
+};
+
+function openModal(project){
+  var id = project.id;
+  var img = project.getElementsByTagName("img")[0].src;
+  fillOut(id, img);
+  modal.style.display = "block";
+  document.getElementsByClassName("modal-content")[0].classList.add("scale");
+}
+
+function fillOut(id, img){
+  document.getElementById("title").innerHTML = modalInfo[id].title;
+  document.getElementById("info").innerHTML = modalInfo[id].info;
+  document.getElementById("img").src = img;
+  document.getElementById("live").onclick = function(){
+    window.open(modalInfo[id].link,'_blank');
+  }
+  document.getElementById("github").onclick = function(){
+    window.open(modalInfo[id].github,'_blank');
+  }
+}
+
+// close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+    </script>
 @endsection

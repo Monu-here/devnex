@@ -45,7 +45,7 @@ Route::prefix('admin')->middleware('admin', 'auth')->name('admin.')->group(funct
         // Route::get('', [WorkProcessController::class, 'index'])->name('index');
         // Route::get('fetch-data', [WorkProcessController::class, 'fetchData'])->name('fetch-data');
         Route::match(['GET', 'POST'], 'add', [WorkProcessController::class, 'add'])->name('add');
-        // Route::match(['GET', 'POST'], 'edit', [WorkProcessController::class, 'edit'])->name('edit');
-        // Route::get('del', [WorkProcessController::class, 'del'])->name('del');
+        Route::match(['GET', 'POST'], 'edit/{id}', [WorkProcessController::class, 'edit'])->name('edit');
+        Route::get('delete/{id}', [WorkProcessController::class, 'delete'])->name('delete');
     });
 });

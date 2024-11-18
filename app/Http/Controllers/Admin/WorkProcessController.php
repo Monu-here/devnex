@@ -14,18 +14,7 @@ class WorkProcessController extends Controller
        $workprocesss = WorkProcess::count()->all();
        $totalWorkProcess = $workprocesss->count();
        $filterWorkProcess = $totalWorkProcess;
-    //    if(isEmpty($workprocesss)){
-    //        foreach($filterWorkProcess as $workProcess){
-    //         //   
-            
-    //             //    $data['sn'] => $request->id
-    //             //    'title' => $workProcess->title,
-    //             //    'description' => $workProcess->description,
-    //             //    'image' => asset($workProcess->image),
-    //             //    'action' => '<a href="'.route('admin.workprocess.edit',$workProcess->id).'" class="btn btn-sm btn-primary">Edit</a> <a href="'.route('admin.workprocess.delete',$workProcess->id).'" class="btn btn-sm btn-danger">Delete</a>'
-        //    }
-        // }
-            //    )
+   
 
     }
     public function add(Request $request){
@@ -38,7 +27,35 @@ class WorkProcessController extends Controller
             return redirect()->back()->with('message','Work Process added successfully.');
         }
         else{
-            return view('admin.workprocess.add');
+            $workProcesss = WorkProcess::get();
+            return view('admin.workprocess.add',compact('workProcesss'));
+        }
+    }
+    public function edit(Request $request ,$id){
+        $workProcess = WorkProcess::find($id);
+        if($workProcess){
+            if($request->getMethod()=='POST'){
+                $workProcess->title = $request->title;
+                $workProcess->description = $request->description;
+                if($request->hasFile('image')){
+                    $workProcess->image = $request->image->store('assets/uploads/workprocess');
+                }
+                $workProcess->save();
+                return redirect()->back()->with('message','Work Process updated successfully.');
+            }
+        }
+        else{
+            return redirect()->back()->with('message','Work Process not found.');
+        }
+    }
+    public function delete($id){
+        $workProcess = WorkProcess::find($id);
+        if($workProcess){
+            $workProcess->delete();
+            return redirect()->back()->with('message','Work Process deleted successfully.');
+        }
+        else{
+            return redirect()->back()->with('message','Work Process not found.');
         }
     }
 }
