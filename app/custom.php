@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 
-function getFooterSetting()
-{
-    return DB::table('settings')->first();
-}
+// function getFooterSetting()
+// {
+//     return DB::table('settings')->first();
+// }

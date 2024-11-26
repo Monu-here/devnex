@@ -19,7 +19,6 @@ class AdminCheckMiddleware
         $user = Auth::user();
 
         if ($user && $user->role == '1') {
-            \Log::info('Admin access granted.');
             return $next($request);
         } else {
             \Log::warning('Admin access denied.', ['user' => $user]);

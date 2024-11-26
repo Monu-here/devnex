@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\WorkProcessController;
 use App\Http\Controllers\Front\HomeController;
@@ -42,10 +43,16 @@ Route::prefix('admin')->middleware('admin', 'auth')->name('admin.')->group(funct
         // Route::get('del', [HomeSettingController::class, 'del'])->name('del');
     });
     Route::prefix('WorkProcess')->name('WorkProcess.')->group(function () {
-        // Route::get('', [WorkProcessController::class, 'index'])->name('index');
-        // Route::get('fetch-data', [WorkProcessController::class, 'fetchData'])->name('fetch-data');
         Route::match(['GET', 'POST'], 'add', [WorkProcessController::class, 'add'])->name('add');
         Route::match(['GET', 'POST'], 'edit/{id}', [WorkProcessController::class, 'edit'])->name('edit');
         Route::get('delete/{id}', [WorkProcessController::class, 'delete'])->name('delete');
     });
+    Route::prefix('project')->name('project.')->group(function () {
+        Route::match(['GET','POST'],'add',[ProjectController::class , 'add'])->name('add');
+        Route::match(['GET','POST'],'edit/{id}',[ProjectController::class , 'edit'])->name('edit');
+        Route::get('delete/{id}', [ProjectController::class, 'delete'])->name('delete');
+
+
+    });
+    
 });

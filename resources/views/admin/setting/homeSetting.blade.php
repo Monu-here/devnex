@@ -87,7 +87,7 @@
                         <div class="col-md-6">
                             <input type="file" name="service_image" id="service_image" class="form-control dropify">
                             <div class="mb-3">
-                                <label for="title" class="form-label">Service Name <span
+                                <label for="title" class="form-label">Service  <span
                                         style="color: red;">*</span></label>
                                 <a href="javascript:void(0);" style="display: flex; float: right;" onclick="xxx()">Add
                                     More</a>
@@ -106,7 +106,7 @@
                         <div class="col-md-6">
                             <input type="file" name="approch_image" id="approch_image" class="form-control dropify">
                             <div class="mb-3">
-                                <label for="title" class="form-label">Our Approach <span
+                                <label for="title" class="form-label">Our Approach / About Us <span
                                         style="color: red;">*</span></label>
                                 <a href="javascript:void(0);" style="display: flex; float: right;"
                                     onclick="ourApproch()">Add
