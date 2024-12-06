@@ -15,9 +15,7 @@
                         <li><a href="#features">About</a></li>
                         <li><a href="#work-process">Work Process</a></li>
                         <li><a href="#testimonials">Our Projects</a></li>
-                        <li><a href="#pricing-plans">Our Team  </a></li>
-                        <li><a href="#blog">Blog </a></li>
-                        <li><a href="#contact-us">Contact Us</a></li>
+                         <li><a href="#contact-us">Contact Us</a></li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>

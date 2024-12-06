@@ -81,11 +81,11 @@
                     <hr>
                     <h3>Services & Our Approach</h3>
                     <button type="submit" id="saveBtn" class="btn btn-primary">Submit</button>
-             
-              
+
+
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="file" name="service_image" id="service_image" class="form-control dropify">
+                            <input type="file" name="service_image" id="service_image" accept="" class="form-control dropify">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Service  <span
                                         style="color: red;">*</span></label>
