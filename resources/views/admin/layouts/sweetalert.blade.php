@@ -11,16 +11,6 @@
             });
         });
     @endif
-    @if (session('success'))
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                icon: 'success',
-                title: 'success',
-                text: '{{ session('message') }}',
-                confirmButtonText: 'OK'
-            });
-        });
-    @endif
     @if (session('error'))
         document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
@@ -45,5 +35,5 @@
             event.target.submit();
         }, 2000);
     });
-    
+
 </script>

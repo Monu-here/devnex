@@ -51,7 +51,7 @@ class HomeSettingController extends Controller
                 $homeSetting->how_we_work_text_4 = strip_tags($request->how_we_work_text_4);
                 $homeSetting->how_we_work_text_5 = strip_tags($request->how_we_work_text_5);
                 $homeSetting->save();
-                return redirect()->back()->with('success', 'Home setting added successfully');
+                return redirect()->back()->with('message', 'Home setting added successfully');
             } else {
                 $homeSetting = HomeSetting::first();
                 return view('admin.setting.homeSetting', compact('homeSetting'));

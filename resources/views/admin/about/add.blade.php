@@ -1,9 +1,11 @@
 @extends('admin.layouts.app')
 @section('admin_title')
-    Workprocess | Add
+    About | Add
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/default.min.css" />
+
     <style>
         p {
             font-size: 14px;
@@ -14,24 +16,24 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <form id="form" action="{{ route('admin.WorkProcess.add') }}" enctype="multipart/form-data" method="POST">
+                <form id="form" action="{{ route('admin.about.add') }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="title" class="form-label">Workprocess Name <span
+                                        <label for="title" class="form-label">Title <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="title" id="Title"
-                                            placeholder="Workprocess Name">
+                                            placeholder=" Name">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="title" class="form-label">Workprocess Description <span
+                                        <label for="title" class="form-label"> Description <span
                                                 style="color: red;">*</span></label>
-                                        <textarea name="description" placeholder="Workprocess Description" class="form-control" id="" cols="30"
+                                        <textarea name="description" placeholder=" Description" class="form-control" id="description" cols="30"
                                             rows="10"></textarea>
 
                                     </div>
@@ -42,7 +44,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label for="title" class="form-label">Workprocess Icon <span
+                                <label for="title" class="form-label">Image <span
                                         style="color: red;">*</span></label>
                                 <input type="file" name="image" id="image" class="dropify" accept="image/*">
                             </div>
@@ -52,7 +54,7 @@
                 </form>
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             @foreach ($workProcesss as $workProcess)
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">
@@ -90,10 +92,12 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+        </div> --}}
     </div>
 @endsection
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/sceditor@3/minified/sceditor.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
     <script>
@@ -103,57 +107,15 @@
 
 
 
-        function toggleEdit(id) {
-            const titleText = document.getElementById('edit-title-' + id);
-            const titleInput = document.getElementById('input-title-' + id);
-            const descriptionText = document.getElementById('edit-description-' + id);
-            const descriptionInput = document.getElementById('input-description-' + id);
-            const buttonHide = document.getElementById('b-save-' + id);
-            const form = document.getElementById('save-form-' + id);
-            if (titleInput.style.display === 'none') {
-                titleInput.style.display = 'inline';
-                titleText.style.display = 'none';
-                descriptionInput.style.display = 'block';
-                descriptionText.style.display = 'none';
-                buttonHide.style.display = 'block';
-                form.style.display = 'block';
-                document.getElementById('form-title-' + id).value = titleInput.value;
-                document.getElementById('form-description-' + id).value = descriptionInput.value;
-            } else {
-                titleInput.style.display = 'none';
-                titleText.style.display = 'inline';
-                descriptionInput.style.display = 'none';
-                descriptionText.style.display = 'inline';
-                buttonHide.style.display = 'none';
-                form.style.display = 'none';
-            }
-        }
-        $(document).ready(function() {
 
-            $('form[id^="form-"]').submit(function(e) {
-
-                e.preventDefault();
-                var id = $(this).attr('id').split('-')[1];
-                var url = "{{ route('admin.WorkProcess.edit', ['id' => ':id']) }}".replace(':id', id);
-                var form = $(this);
-                var formData = new FormData(form[0]);
-
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        console.log('Form submitted successfully');
-                        location.reload();
-
-                    },
-                    error: function(data) {
-                        console.log('An error occurred.');
-                    },
-                });
-            });
-        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sceditor@3/minified/formats/xhtml.min.js"></script>
+    <script>
+    // Replace the textarea #example with SCEditor
+    var textarea = document.getElementById('description');
+    sceditor.create(textarea, {
+        format: 'xhtml',
+        style: 'https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css'
+    });
     </script>
 @endsection

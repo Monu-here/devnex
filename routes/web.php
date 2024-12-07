@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\LoginController;
@@ -42,17 +43,14 @@ Route::prefix('admin')->middleware('admin', 'auth')->name('admin.')->group(funct
         // Route::match(['GET', 'POST'], 'edit', [HomeSettingController::class, 'edit'])->name('edit');
         // Route::get('del', [HomeSettingController::class, 'del'])->name('del');
     });
-    Route::prefix('WorkProcess')->name('WorkProcess.')->group(function () {
-        Route::match(['GET', 'POST'], 'add', [WorkProcessController::class, 'add'])->name('add');
-        Route::match(['GET', 'POST'], 'edit/{id}', [WorkProcessController::class, 'edit'])->name('edit');
-        Route::get('delete/{id}', [WorkProcessController::class, 'delete'])->name('delete');
+
+    Route::prefix('about')->name('about.')->group(function () {
+        Route::match(['GET', 'POST'], 'add', [AboutController::class, 'add'])->name('add');
     });
+
     Route::prefix('project')->name('project.')->group(function () {
-        Route::match(['GET','POST'],'add',[ProjectController::class , 'add'])->name('add');
-        Route::match(['GET','POST'],'edit/{id}',[ProjectController::class , 'edit'])->name('edit');
+        Route::match(['GET', 'POST'], 'add', [ProjectController::class, 'add'])->name('add');
+        Route::match(['GET', 'POST'], 'edit/{id}', [ProjectController::class, 'edit'])->name('edit');
         Route::get('delete/{id}', [ProjectController::class, 'delete'])->name('delete');
-
-
     });
-    
 });
