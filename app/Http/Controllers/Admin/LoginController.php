@@ -17,7 +17,7 @@ class LoginController extends Controller
             if (Auth::attempt($credential)) {
                 return redirect()->route('admin.dashboard')->with('message', 'Login  Successfully');
             } else {
-                return redirect()->back()->withInput()->with('error', 'Invalid credentials');
+                return redirect()->back()->withInput()->with('error', 'Your login failed');
             }
         } else {
             return view('admin.login.index');

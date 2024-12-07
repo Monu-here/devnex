@@ -10,31 +10,54 @@ class HomeSettingController extends Controller
 {
     public function add(Request $request)
     {
-        if ($request->getMethod() == 'POST') {
-            
-            $homeSetting = new HomeSetting();
-            $homeSetting->home_text = $request->home_text;
-            $homeSetting->home_description = $request->home_description;
-            $homeSetting->btn_text = $request->btn_text;
-            $homeSetting->achievements_number = json_encode($request->achievements_number);
-            $homeSetting->achievements_name = json_encode($request->achievements_name);
-            $homeSetting->approch_name = json_encode($request->approch_name);
-            $homeSetting->approch_desc = json_encode($request->approch_desc);
-            $homeSetting->service_name = json_encode($request->service_name);
-            $homeSetting->service_desc = json_encode($request->service_desc);
-            if($request->hasFile('service_image')){
-                $homeSetting->service_image = json_encode($request->service_image->store('assets/uploads/services'));
-                
+        try {
+            if ($request->getMethod() == 'POST') {
+                $validate = $request->validate([
+                    'home_text' => 'required|string|max:255',
+                    'home_description' => 'required|string|max:255',
+                    'how_we_work_text_1' => 'required|string|max:255',
+                    'how_we_work_text_2' => 'required|string|max:255',
+                    'how_we_work_text_3' => 'required|string|max:255',
+                    'how_we_work_text_4' => 'required|string|max:255',
+                    'how_we_work_text_5' => 'required|string|max:255',
+                    'how_we_work_icon_1' => 'required|image|mimes:png,jpg,gif,svg,webp',
+                    'how_we_work_icon_2' => 'required|image|mimes:png,jpg,gif,svg,webp',
+                    'how_we_work_icon_3' => 'required|image|mimes:png,jpg,gif,svg,webp',
+                    'how_we_work_icon_4' => 'required|image|mimes:png,jpg,gif,svg,webp',
+                    'how_we_work_icon_5' => 'required|image|mimes:png,jpg,gif,svg,webp',
+                ]);
+
+                $homeSetting = new HomeSetting();
+                if ($request->hasFile('how_we_work_icon_1')) {
+                    $homeSetting->how_we_work_icon_1 = $request->how_we_work_icon_1->store('assets/uploads/how_we_work');
+                }
+                if ($request->hasFile('how_we_work_icon_2')) {
+                    $homeSetting->how_we_work_icon_2 = $request->how_we_work_icon_2->store('assets/uploads/how_we_work');
+                }
+                if ($request->hasFile('how_we_work_icon_3')) {
+                    $homeSetting->how_we_work_icon_3 = $request->how_we_work_icon_3->store('assets/uploads/how_we_work');
+                }
+                if ($request->hasFile('how_we_work_icon_4')) {
+                    $homeSetting->how_we_work_icon_4 = $request->how_we_work_icon_4->store('assets/uploads/how_we_work');
+                }
+                if ($request->hasFile('how_we_work_icon_5')) {
+                    $homeSetting->how_we_work_icon_5 = $request->how_we_work_icon_5->store('assets/uploads/how_we_work');
+                }
+                $homeSetting->home_text = strip_tags($request->home_text);
+                $homeSetting->home_description = strip_tags($request->home_description);
+                $homeSetting->how_we_work_text_1 = strip_tags($request->how_we_work_text_1);
+                $homeSetting->how_we_work_text_2 = strip_tags($request->how_we_work_text_2);
+                $homeSetting->how_we_work_text_3 = strip_tags($request->how_we_work_text_3);
+                $homeSetting->how_we_work_text_4 = strip_tags($request->how_we_work_text_4);
+                $homeSetting->how_we_work_text_5 = strip_tags($request->how_we_work_text_5);
+                $homeSetting->save();
+                return redirect()->back()->with('success', 'Home setting added successfully');
+            } else {
+                $homeSetting = HomeSetting::first();
+                return view('admin.setting.homeSetting', compact('homeSetting'));
             }
-            if($request->hasFile('approch_image')){
-                 $homeSetting->approch_image = json_encode($request->approch_image->store('assets/uploads/approch'));
-                
-            }
-            $homeSetting->save();
-            return redirect()->back()->with('success', 'Home setting added successfully.');
-        } else {
-            $homeSettings = HomeSetting::all();
-            return view('admin.setting.homeSetting' , compact('homeSettings'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage(), 500);
         }
     }
 }

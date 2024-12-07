@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('slug');
             $table->text('image');
             $table->text('url');
+            $table->unsignedBigInteger('project_category_id');
             $table->timestamps();
         });
     }

@@ -15,15 +15,16 @@ return new class extends Migration
             $table->id();
             $table->text('home_text');
             $table->text('home_description');
-            $table->text('btn_text');
-            $table->json('achievements_number');
-            $table->json('achievements_name');
-            $table->json('approch_name');
-            $table->json('approch_desc');
-            $table->json('approch_image');
-            $table->json('service_name');
-            $table->json('service_desc');
-            $table->json('service_image');
+            $table->text('how_we_work_icon_1');
+            $table->text('how_we_work_text_1');
+            $table->text('how_we_work_icon_2');
+            $table->text('how_we_work_text_2');
+            $table->text('how_we_work_icon_3');
+            $table->text('how_we_work_text_3');
+            $table->text('how_we_work_icon_4');
+            $table->text('how_we_work_text_4');
+            $table->text('how_we_work_icon_5');
+            $table->text('how_we_work_text_5');
 
             $table->timestamps();
         });

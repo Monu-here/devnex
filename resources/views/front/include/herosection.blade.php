@@ -1,13 +1,13 @@
 <section id="hero" class="hero section dark-background">
 
-    <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+    <img src="{{asset('assets/front/img/hero-bg.jpg')}}" alt="" data-aos="fade-in">
 
     <div class="container">
 
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
             <div class="col-xl-6 col-lg-8">
-                <h2>Powerful Digital Solutions With GP<span>.</span></h2>
-                <p>We are team of talented digital marketers</p>
+                <h2>Touch The Future With Devnex<span>.</span></h2>
+                <p>We are team of talented Devnex</p>
             </div>
         </div>
 
