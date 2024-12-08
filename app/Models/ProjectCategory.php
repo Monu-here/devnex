@@ -13,6 +13,6 @@ class ProjectCategory extends Model
         'name'
     ];
     public function project() {
-        return $this->belongsTo(Project::class);
+        return $this->hasMany(Project::class ,'project_category_id');
     }
 }

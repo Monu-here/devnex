@@ -28,11 +28,13 @@ class ProjectController extends Controller
     }
     public function deleteCategory($id)
     {
-        $category = ProjectCategory::find($id);
+        $category = ProjectCategory::with('project')->where('id',$id)->first();
+
 
         if ($category->project && $category->project->count() > 0) {
             return redirect()->back()->with('error', 'This category has projects attached. You can not delete it.');
         }
+
         if ($category) {
             $category->delete();
             return redirect()->back()->with('message', 'Category deleted successfully.');
@@ -45,7 +47,7 @@ class ProjectController extends Controller
     public function list(ProjectCategory $category){
 
         $projects = DB::table('projects')
-        ->where('project_categories_id', $category->id)
+        ->where('project_category_id', $category->id)
         ->get();
         return view('admin.project.add', compact('projects', 'category'));
 
@@ -64,7 +66,7 @@ class ProjectController extends Controller
             $project->name = $request->name;
             $project->description = $request->description;
             $project->url = $request->url;
-            $project->project_categories_id = $request->project_categories_id;
+            $project->project_category_id = $request->project_category_id;
             $project->image = $request->image->store('assets/uploads/project');
 
             $project->save();

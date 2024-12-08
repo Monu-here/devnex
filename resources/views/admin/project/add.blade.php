@@ -17,7 +17,7 @@
             <div class="card-body">
                 <form id="form" action="{{ route('admin.project.add') }}" enctype="multipart/form-data" method="POST">
                     @csrf
-                    <input type="hidden" name="project_categories_id"  value="{{$category->id}}">
+                    <input type="hidden" name="project_category_id"  value="{{$category->id}}">
                     <div class="row">
                         <div class="col-md-9">
                             <div class="row">

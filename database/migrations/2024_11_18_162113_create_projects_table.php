@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('slug');
             $table->text('image');
             $table->text('url');
-            $table->unsignedBigInteger('project_categories_id');
+            $table->unsignedBigInteger('project_category_id');
             $table->timestamps();
         });
         Schema::create('project_categories', function (Blueprint $table) {
