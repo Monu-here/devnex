@@ -49,11 +49,11 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.project.add')}}" aria-expanded="false">
+            <a class="sidebar-link" href="{{route('admin.project.category')}}" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Projects</span>
+                <span class="hide-menu">Project Category</span>
             </a>
         </li>
 

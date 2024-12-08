@@ -49,6 +49,9 @@ Route::prefix('admin')->middleware('admin', 'auth')->name('admin.')->group(funct
     });
 
     Route::prefix('project')->name('project.')->group(function () {
+        Route::match(['GET','POST'],'category',[ProjectController::class, 'category'])->name('category');
+        Route::get('delete-category/{id}',[ProjectController::class, 'deleteCategory'])->name('delete-category');
+        Route::match(['GET', 'POST'], 'add/{category}', [ProjectController::class, 'list'])->name('list');
         Route::match(['GET', 'POST'], 'add', [ProjectController::class, 'add'])->name('add');
         Route::match(['GET', 'POST'], 'edit/{id}', [ProjectController::class, 'edit'])->name('edit');
         Route::get('delete/{id}', [ProjectController::class, 'delete'])->name('delete');

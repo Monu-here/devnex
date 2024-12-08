@@ -18,7 +18,7 @@ class Project extends Model
     ];
     protected static function boot() {
         parent::boot();
-    
+
         static::creating(function ($project) {
             $project->slug = \Str::slug($project->name);
         });
@@ -26,5 +26,8 @@ class Project extends Model
             $project->slug = \Str::slug($project->name);
         });
     }
-    
+    function categoryProject(){
+        return $this->belongsTo(ProjectCategory::class,'project_categories_id');
+    }
+
 }

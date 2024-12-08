@@ -27,11 +27,11 @@ class AboutController extends Controller
                 $about->save();
                 return redirect()->back()->with('message', 'About added successfully.');
             } else {
-                return view('admin.about.add');
+                $about = About::orderBy('created_at', 'desc')->first();
+                return view('admin.about.add', compact('about'));
             }
         } catch (\Exception $validate) {
-            return redirect()->back()->with('error',$validate->getMessage());
-
+            return redirect()->back()->with('error', $validate->getMessage());
         }
     }
 }

@@ -11,11 +11,13 @@
     </style>
 @endsection
 @section('content')
+
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
                 <form id="form" action="{{ route('admin.project.add') }}" enctype="multipart/form-data" method="POST">
                     @csrf
+                    <input type="hidden" name="project_categories_id"  value="{{$category->id}}">
                     <div class="row">
                         <div class="col-md-9">
                             <div class="row">
@@ -106,7 +108,8 @@
                         <div>
                             <button class="btn btn-primary btn-sm" onclick="toggleEdit({{ $project->id }})"
                                 id="textchnage">EDIT</button>
-                                <a href="{{route('admin.project.delete',['id'=>$project->id])}}" class="btn btn-danger btn-sm">Del</a>
+                            <a href="{{ route('admin.project.delete', ['id' => $project->id]) }}"
+                                class="btn btn-danger btn-sm">Del</a>
 
                         </div>
                     </div>
@@ -149,12 +152,12 @@
                 document.getElementById('form-description-' + id).value = descriptionInput.value;
             } else {
                 titleInput.style.display = 'none';
- 
+
 
                 titleText.style.display = 'inline';
                 descriptionInput.style.display = 'none';
                 descriptionText.style.display = 'inline';
- 
+
                 buttonHide.style.display = 'none';
                 form.style.display = 'none';
             }
