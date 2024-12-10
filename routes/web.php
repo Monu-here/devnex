@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\WorkProcessController;
 use App\Http\Controllers\Front\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -49,11 +52,20 @@ Route::prefix('admin')->middleware('admin', 'auth')->name('admin.')->group(funct
     });
 
     Route::prefix('project')->name('project.')->group(function () {
-        Route::match(['GET','POST'],'category',[ProjectController::class, 'category'])->name('category');
-        Route::get('delete-category/{id}',[ProjectController::class, 'deleteCategory'])->name('delete-category');
+        Route::match(['GET', 'POST'], 'category', [ProjectController::class, 'category'])->name('category');
+        Route::get('delete-category/{id}', [ProjectController::class, 'deleteCategory'])->name('delete-category');
         Route::match(['GET', 'POST'], 'add/{category}', [ProjectController::class, 'list'])->name('list');
         Route::match(['GET', 'POST'], 'add', [ProjectController::class, 'add'])->name('add');
         Route::match(['GET', 'POST'], 'edit/{id}', [ProjectController::class, 'edit'])->name('edit');
         Route::get('delete/{id}', [ProjectController::class, 'delete'])->name('delete');
+    });
+    Route::prefix('service')->name('service.')->group(function () {
+        Route::match(['GET', 'POST'], 'add', [ServicesController::class, 'add'])->name('add');
+    });
+    Route::prefix('team')->name('team.')->group(function () {
+        Route::match(['GET', 'POST'], 'add', [TeamController::class, 'add'])->name('add');
+    });
+    Route::prefix('contact')->name('contact.')->group(function () {
+        Route::match(['GET', 'POST'], 'add', [ContactUsController::class, 'add'])->name('add');
     });
 });
