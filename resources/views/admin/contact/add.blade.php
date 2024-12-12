@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('admin_title')
-    Service | Add
+    Contact Us | Add
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
@@ -56,8 +56,8 @@
 
 
                             </div>
+                            <button type="submit" id="saveBtn" class="btn btn-primary">Submit</button>
                         </div>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">Submit</button>
 
                     </div>
                 </form>
