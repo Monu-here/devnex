@@ -20,11 +20,11 @@ class HomeSettingController extends Controller
                     'how_we_work_text_3' => 'required|string|max:255',
                     'how_we_work_text_4' => 'required|string|max:255',
                     'how_we_work_text_5' => 'required|string|max:255',
-                    'how_we_work_icon_1' => 'required|image|mimes:png,jpg,gif,svg,webp',
-                    'how_we_work_icon_2' => 'required|image|mimes:png,jpg,gif,svg,webp',
-                    'how_we_work_icon_3' => 'required|image|mimes:png,jpg,gif,svg,webp',
-                    'how_we_work_icon_4' => 'required|image|mimes:png,jpg,gif,svg,webp',
-                    'how_we_work_icon_5' => 'required|image|mimes:png,jpg,gif,svg,webp',
+                    'how_we_work_icon_1' => 'image|mimes:png,jpg,gif,svg,webp',
+                    'how_we_work_icon_2' => 'image|mimes:png,jpg,gif,svg,webp',
+                    'how_we_work_icon_3' => 'image|mimes:png,jpg,gif,svg,webp',
+                    'how_we_work_icon_4' => 'image|mimes:png,jpg,gif,svg,webp',
+                    'how_we_work_icon_5' => 'image|mimes:png,jpg,gif,svg,webp',
                 ]);
 
                 $homeSetting = new HomeSetting();
