@@ -7,12 +7,14 @@ use App\Models\Project;
 use App\Models\ProjectCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class ProjectController extends Controller
 {
     public function category(Request $request)
     {
         try {
+
             if ($request->getMethod() == 'POST') {
                 $category = new ProjectCategory();
                 $category->name = $request->name;
@@ -28,7 +30,7 @@ class ProjectController extends Controller
     }
     public function deleteCategory($id)
     {
-        $category = ProjectCategory::with('project')->where('id',$id)->first();
+        $category = ProjectCategory::with('project')->where('id', $id)->first();
 
 
         if ($category->project && $category->project->count() > 0) {
@@ -40,24 +42,14 @@ class ProjectController extends Controller
             return redirect()->back()->with('message', 'Category deleted successfully.');
         }
     }
-
-
-
-
-    public function list(ProjectCategory $category){
+    public function list(ProjectCategory $category)
+    {
 
         $projects = DB::table('projects')
-        ->where('project_category_id', $category->id)
-        ->get();
+            ->where('project_category_id', $category->id)
+            ->get();
         return view('admin.project.add', compact('projects', 'category'));
-
     }
-
-
-
-
-
-
     public function add(Request $request)
     {
         if ($request->getMethod() == 'POST') {
@@ -101,6 +93,20 @@ class ProjectController extends Controller
         if ($project) {
             $project->delete();
             return redirect()->back()->with('message', 'Project deleted successfully.');
+        }
+    }
+
+    public function categoryEdit(Request $request, $id)
+    {
+        $category = ProjectCategory::find($id);
+        if ($category) {
+            if ($request->getMethod() == 'POST') {
+                $category->name = $request->name;
+                $category->save();
+                return redirect()->route('admin.project.category')->with('message', 'Category edit successfully.');
+            } else {
+                return view('admin.project.categoryEdit', compact('category'));
+            }
         }
     }
 }

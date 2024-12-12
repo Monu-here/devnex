@@ -28,7 +28,41 @@ class ServicesController extends Controller
                 $service->save();
                 return redirect()->back()->with('message', 'Service added successfully.');
             } else {
-                return view('admin.service.add');
+                $services = Service::orderBy('created_at', 'Desc')->get();
+                return view('admin.service.add', compact('services'));
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+    public function edit(Request $request, $id)
+    {
+        try {
+            $service = Service::find($id);
+            if ($service) {
+                if ($request->getMethod() == 'POST') {
+                    // validate the data
+                    $service->name = $request->input('name');
+                    $service->description = $request->input('description');
+                    if ($request->hasFile('icon')) {
+                        $service->icon = $request->icon->store('assets/uploads/services');
+                    }
+                    $service->save();
+                    return redirect()->route('admin.service.add')->with('message', 'Service edit successfully.');
+                } else {
+                    return view('admin.service.edit', compact('service'));
+                }
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+    public function delete($id){
+        try {
+            $service = Service::find($id);
+            if ($service) {
+                $service->delete();
+                return redirect()->route('admin.service.add')->with('message', 'Service deleted successfully.');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());

@@ -36,10 +36,46 @@ class TeamController extends Controller
                 $team->save();
                 return redirect()->back()->with('message', 'Team added successfully');
             } else {
-                return view('admin.team.add');
+                $teams = Team::orderBy('created_at', 'Desc')->get();
+                return view('admin.team.add', compact('teams'));
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
+    }
+    public function edit(Request $request, $id)
+    {
+        try {
+            $team = Team::find($id);
+            if ($team) {
+                if ($request->getMethod() == 'POST') {
+
+                    $team->name = $request->name;
+                    $team->position = $request->position;
+                    $team->facebook = $request->facebook;
+                    $team->instagram = $request->instagram;
+                    $team->linkedin = $request->linkedin;
+                    $team->github = $request->github;
+                    if ($request->hasFile('image')) {
+                        $team->image = $request->image->store('assets/uploads/team');
+                    }
+                    $team->save();
+                    return redirect()->route('admin.team.add')->with('message', 'Team edit successfully');
+                } else {
+                    return view('admin.team.edit', compact('team'));
+                }
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+    public function delete($id)
+    {
+        $team = Team::find($id);
+        if ($team) {
+            $team->delete();
+            return redirect()->back()->with('message', 'Team deleted successfully');
+        }
+        return redirect()->back()->with('error', 'Team not found');
     }
 }

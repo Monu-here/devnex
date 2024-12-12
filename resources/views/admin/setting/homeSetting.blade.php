@@ -24,7 +24,7 @@
                                         <label for="title" class="form-label">Home Text <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="home_text" id="home_text"
-                                            placeholder="Home Text" value="{{$homeSetting->home_text}}">
+                                            placeholder="Home Text" value="{{$homeSetting->home_text ?? 'No Text'}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -32,7 +32,7 @@
                                         <label for="title" class="form-label">Home Description <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="home_description"
-                                            id="home_description" placeholder="Home Description " value="{{$homeSetting->home_description}}">
+                                            id="home_description" placeholder="Home Description " value="{{$homeSetting->home_description  ?? 'No Description'}}">
                                     </div>
                                 </div>
                             </div>
@@ -45,11 +45,11 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <input type="file" name="how_we_work_icon_1" id="image" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_1)}}">
+                                        <input type="file" name="how_we_work_icon_1" id="image" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_1 ?? 'No Image')}}">
                                         <label for="title" class="form-label">How we work 1  <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="how_we_work_text_1" id="how_we_work_text_1"
-                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_1}}">
+                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_1 ?? 'No Text'}}">
                                     </div>
                                 </div>
                             </div>
@@ -59,11 +59,11 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <input type="file" name="how_we_work_icon_2" id="how_we_work_icon_2" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_2)}}">
+                                        <input type="file" name="how_we_work_icon_2" id="how_we_work_icon_2" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_2 ?? 'No Image')}}">
                                         <label for="title" class="form-label">How we work 2 <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="how_we_work_text_2" id="how_we_work_text_2"
-                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_2}}">
+                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_2 ?? 'No Text'}}">
                                     </div>
                                 </div>
                             </div>
@@ -72,11 +72,11 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <input type="file" name="how_we_work_icon_3" id="how_we_work_icon_3" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_3)}}">
+                                        <input type="file" name="how_we_work_icon_3" id="how_we_work_icon_3" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_3 ?? 'No Image')}}">
                                         <label for="title" class="form-label">How we work 3 <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="how_we_work_text_3" id=""
-                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_3}} ">
+                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_3 ?? 'No Text'}} ">
                                     </div>
                                 </div>
                             </div>
@@ -85,11 +85,11 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <input type="file" name="how_we_work_icon_4" id="how_we_work_icon_4" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_4)}}">
+                                        <input type="file" name="how_we_work_icon_4" id="how_we_work_icon_4" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_4 ?? 'No Image')}}">
                                         <label for="title" class="form-label">How we work 4 <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="how_we_work_text_4" id=""
-                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_4}} ">
+                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_4 ?? 'No Text'}} ">
                                     </div>
                                 </div>
                             </div>
@@ -98,11 +98,11 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <input type="file" name="how_we_work_icon_5" id="how_we_work_icon_5" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_5)}}">
+                                        <input type="file" name="how_we_work_icon_5" id="how_we_work_icon_5" class="dropify" accept="image/*" data-default-file="{{asset($homeSetting->how_we_work_icon_5 ?? 'No Image')}}">
                                         <label for="title" class="form-label">How we work 5 <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="how_we_work_text_5" id="how_we_work_text_5"
-                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_5}}">
+                                            placeholder="How we work" value="{{$homeSetting->how_we_work_text_5 ?? 'No Text'}}">
                                     </div>
                                 </div>
                             </div>

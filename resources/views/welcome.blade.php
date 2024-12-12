@@ -9,7 +9,7 @@
     <!-- /About Section -->
 
     <!-- Clients Section -->
-    @include('front.include.client')
+    {{-- @include('front.include.client') --}}
     <!-- /Clients Section -->
 
     <!-- Features Section -->
@@ -38,7 +38,7 @@
     <!-- /Stats Section -->
 
     <!-- Testimonials Section -->
-    @include('front.include.testimonial')
+    {{-- @include('front.include.testimonial') --}}
 
     <!-- /Testimonials Section -->
 

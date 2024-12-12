@@ -49,10 +49,14 @@ Route::prefix('admin')->middleware('admin', 'auth')->name('admin.')->group(funct
 
     Route::prefix('about')->name('about.')->group(function () {
         Route::match(['GET', 'POST'], 'add', [AboutController::class, 'add'])->name('add');
+        Route::match(['GET', 'POST'], 'edit/{id}', [AboutController::class, 'edit'])->name('edit');
+        Route::get('delete/{id}', [AboutController::class, 'delete'])->name('delete');
     });
 
     Route::prefix('project')->name('project.')->group(function () {
         Route::match(['GET', 'POST'], 'category', [ProjectController::class, 'category'])->name('category');
+        Route::match(['GET', 'POST'], 'category-edit/{id}', [ProjectController::class, 'categoryEdit'])->name('categoryEdit');
+
         Route::get('delete-category/{id}', [ProjectController::class, 'deleteCategory'])->name('delete-category');
         Route::match(['GET', 'POST'], 'add/{category}', [ProjectController::class, 'list'])->name('list');
         Route::match(['GET', 'POST'], 'add', [ProjectController::class, 'add'])->name('add');
@@ -61,9 +65,13 @@ Route::prefix('admin')->middleware('admin', 'auth')->name('admin.')->group(funct
     });
     Route::prefix('service')->name('service.')->group(function () {
         Route::match(['GET', 'POST'], 'add', [ServicesController::class, 'add'])->name('add');
+        Route::match(['GET', 'POST'], 'edit/{id}', [ServicesController::class, 'edit'])->name('edit');
+        Route::match(['GET', 'POST'], 'delete/{id}', [ServicesController::class, 'delete'])->name('delete');
     });
     Route::prefix('team')->name('team.')->group(function () {
         Route::match(['GET', 'POST'], 'add', [TeamController::class, 'add'])->name('add');
+        Route::match(['GET', 'POST'], 'edit/{id}', [TeamController::class, 'edit'])->name('edit');
+        Route::match(['GET', 'POST'], 'delete/{id}', [TeamController::class, 'delete'])->name('delete');
     });
     Route::prefix('contact')->name('contact.')->group(function () {
         Route::match(['GET', 'POST'], 'add', [ContactUsController::class, 'add'])->name('add');

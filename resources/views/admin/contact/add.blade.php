@@ -24,7 +24,7 @@
                                         <label for="name" class="form-label">Address <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="address" id="address"
-                                            placeholder="Address">
+                                            placeholder="Address" value="{{ $contact->address ?? 'No Address' }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -32,7 +32,7 @@
                                         <label for="name" class="form-label">Email <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="email" id="email"
-                                            placeholder="Email">
+                                            placeholder="Email" value="{{ $contact->email ?? 'No Email' }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -40,7 +40,7 @@
                                         <label for="name" class="form-label">Phone <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="call" id="call"
-                                            placeholder="Phone">
+                                            placeholder="Phone" value="{{ $contact->call ?? 'No Phone Number' }}">
                                     </div>
                                 </div>
 
@@ -48,7 +48,8 @@
                                     <div class="mb-3">
                                         <label for="description" class="form-label">Map <span
                                                 style="color: red;">*</span></label>
-                                       <input type="url" name="map" id="map" class="form-control">
+                                        <input type="url" name="map" id="map" class="form-control"
+                                            value="{{ $contact->map ?? 'No Map' }}">
 
                                     </div>
                                 </div>

@@ -50,8 +50,11 @@
                             <div>
                                 <a href="{{ route('admin.project.list', ['category' => $project->id]) }}"
                                     class="btn btn-primary btn-sm" id="textchnage">Project</a>
+                                <a href="{{ route('admin.project.categoryEdit', ['id' => $project->id]) }}"
+                                    class="btn btn-primary btn-sm" id="textchnage">Edit</a>
                                 <a href="{{ route('admin.project.delete-category', ['id' => $project->id]) }}"
-                                    class="btn btn-danger btn-sm">Del</a>
+                                    class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Would you like to delete');">Del</a>
 
                             </div>
                         </div>

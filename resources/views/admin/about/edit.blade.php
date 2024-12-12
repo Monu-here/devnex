@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('admin_title')
-    About | Add
+    About | Edit | {{$about->title}}
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
@@ -16,8 +16,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-
-                <form id="form" action="{{ route('admin.about.add') }}" enctype="multipart/form-data" method="POST">
+                <form id="form" action="{{ route('admin.about.edit',['id'=>$about->id]) }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-9">
@@ -27,7 +26,7 @@
                                         <label for="title" class="form-label">Title <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="title" id="Title"
-                                            placeholder=" Name">
+                                            placeholder=" Name" value="{{ $about->title ?? 'no title' }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -35,7 +34,7 @@
                                         <label for="title" class="form-label"> Description <span
                                                 style="color: red;">*</span></label>
                                         <textarea name="description" placeholder=" Description" class="form-control" id="description" cols="30"
-                                            rows="10"></textarea>
+                                            rows="10">{!! $about->description ?? 'no description' !!}</textarea>
 
                                     </div>
                                 </div>
@@ -46,54 +45,14 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Image <span style="color: red;">*</span></label>
-                                <input type="file" name="image" id="image" class="dropify" accept="image/*">
+                                <input type="file" name="image" id="image" class="dropify" accept="image/*"
+                                    data-default-file="{{ asset($about->image ?? 'no img') }}">
                             </div>
-                            <button type="submit" id="saveBtn" class="btn btn-primary btn-sm">Submit</button>
-                            <div style="display: flex; float: right">
-
-
-                            </div>
+                            <button type="submit" id="saveBtn" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="row">
-            @foreach ($abouts as $about)
-                <div class="col-md-3">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset($about->image ?? asset('assets/image/right-image.png')) }}" class="card-img-top">
-                        <div class="card-body">
-                            <form id="form-{{ $about->id }}" action="#" method="POST">
-                                @csrf
-                                <h5 class="card-title" id="title-{{ $about->id }}">
-                                    <span class="edit-title" id="edit-title-{{ $about->id }}">
-                                        {{ $about->title ?? 'No Title' }}
-                                    </span>
-
-                                </h5>
-                                <p class="card-text" id="description-{{ $about->id }}">
-                                    <span class="edit-description" id="edit-description-{{ $about->id }}">
-                                        @php
-                                            $truncated = \Str::limit(strip_tags($about->description), 150);
-
-                                        @endphp
-                                        {!! $truncated ?? 'No Description' !!}
-
-                                    </span>
-                                </p>
-                                <br>
-                            </form>
-                            <div>
-                                <a href="{{ route('admin.about.edit', ['id' => $about->id]) }}"
-                                    class="btn btn-primary btn-sm">Edit</a>
-                                <a href="{{ route('admin.about.delete', ['id' => $about->id]) }}"
-                                    class="btn btn-danger btn-sm">Delete</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
         </div>
     </div>
 @endsection

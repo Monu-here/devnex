@@ -26,10 +26,11 @@ class ContactUsController extends Controller
                 $contact->save();
                 return redirect()->back()->with('message', 'Contact added successfully');
             } else {
-                return view('admin.contact.add');
+                $contact = Contact::first();
+                return view('admin.contact.add', compact('contact'));
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
-         }
+        }
     }
 }

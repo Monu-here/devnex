@@ -25,7 +25,7 @@
             <span class="hide-menu">COMPONENTS</span>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.setting.add')}}" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('admin.setting.add') }}" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
@@ -33,7 +33,7 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.homeSetting.add')}}" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('admin.homeSetting.add') }}" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
@@ -41,7 +41,7 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.about.add')}}" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('admin.about.add') }}" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
@@ -49,11 +49,35 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('admin.project.category')}}" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('admin.project.category') }}" aria-expanded="false">
                 <span>
                     <i class="ti ti-article"></i>
                 </span>
                 <span class="hide-menu">Project Category</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('admin.service.add') }}" aria-expanded="false">
+                <span>
+                    <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Service</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('admin.team.add') }}" aria-expanded="false">
+                <span>
+                    <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Team</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('admin.contact.add') }}" aria-expanded="false">
+                <span>
+                    <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Comtact</span>
             </a>
         </li>
 
