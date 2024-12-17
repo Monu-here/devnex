@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('contact_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('address')->nullable();
-            $table->string('call')->nullable();
-            $table->string('email')->nullable();
-            $table->text('map')->nullable();
+            $table->string('name')->nullable();
+            $table->string('email1')->nullable();
+            $table->string('subject')->nullable();
+            $table->string('message')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('contact_lists');
     }
 };

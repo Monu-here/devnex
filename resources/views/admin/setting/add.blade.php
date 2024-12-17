@@ -45,27 +45,7 @@
                                 </div>
 
 
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="title" class="form-label">Social Media <span
-                                                style="color: red;">*</span></label>
-                                        <a href="javascript:void(0);" style="display: flex; float: right;"
-                                            onclick="addSocialMedia()">Add More</a>
-                                        @if (!empty($setting['social_media']))
-                                            @foreach (json_decode($setting['social_media']) as $socialMedia)
-                                                {{-- // $s  ocialMediaString = implode(', ',json_decode($setting['social_media'] ?? '[]')); --}}
-                                                <input type="text" class="form-control" name="social_media[]"
-                                                    value="{{ $socialMedia }}">
-                                            @endforeach
-                                        @else
-                                            <input type="text" class="form-control" name="social_media[]"
-                                                placeholder="Social media">
-                                        @endif
-
-                                        <div id="socialField" style="margin-top : 10px;"></div>
-                                    </div>
-                                </div>
-
+                               
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -87,9 +67,9 @@
         {{-- @foreach ($others as $item)
             <li class="list-item">
                 @php
-                   
+
                 @endphp
-              
+
             </li>
             <li>
                 {{ $menuNameString }}

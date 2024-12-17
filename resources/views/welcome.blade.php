@@ -13,7 +13,7 @@
     <!-- /Clients Section -->
 
     <!-- Features Section -->
-    @include('front.include.feature')
+    {{-- @include('front.include.feature') --}}
 
     <!-- /Features Section -->
 

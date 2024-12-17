@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('front.')->group(function () {
     Route::get('', [HomeController::class, 'index'])->name('index');
+    Route::match(['GET', 'POST'], 'contacts', [HomeController::class, 'contacts'])->name('contacts');
 });
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
@@ -75,5 +76,6 @@ Route::prefix('admin')->middleware('admin', 'auth')->name('admin.')->group(funct
     });
     Route::prefix('contact')->name('contact.')->group(function () {
         Route::match(['GET', 'POST'], 'add', [ContactUsController::class, 'add'])->name('add');
+        Route::get('delete/{id}', [ContactUsController::class, 'delete'])->name('delete');
     });
 });

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\ContactList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContactUsController extends Controller
 {
@@ -27,7 +29,19 @@ class ContactUsController extends Controller
                 return redirect()->back()->with('message', 'Contact added successfully');
             } else {
                 $contact = Contact::first();
-                return view('admin.contact.add', compact('contact'));
+                $contactLists = DB::table('contact_lists')->get();
+                return view('admin.contact.add', compact('contact','contactLists'));
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+    public function delete($id){
+        try {
+            $contact = ContactList::find($id);
+            if ($contact) {
+                $contact->delete();
+                return redirect()->back()->with('message', 'Contact list deleted successfully.');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());

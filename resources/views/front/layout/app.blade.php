@@ -1,10 +1,13 @@
+@php
+    $setting = getSetting();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Devnex </title>
+    <title>{{$setting->website_name ?? 'Devnex'}} </title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -17,6 +20,8 @@
     <link href="{{ asset('assets/front/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/front/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/front/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{asset($setting->website_image ?? '')}}">
+
     <!-- Main CSS File -->
     <link href="{{ asset('assets/front/css/main.css') }}" rel="stylesheet">
     @yield('css')
